@@ -24,9 +24,10 @@
       margin: 0;
       font-family: sans-serif;
       background: #f8f8f8;
+      flex-direction: column;
     }
     .open-btn {
-      display: inline-block;
+      display: none; /* Hidden initially */
       padding: 20px 40px;
       font-size: 24px;
       background: #1a73e8;
@@ -35,14 +36,28 @@
       text-decoration: none;
       text-align: center;
       box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+      margin-top: 20px;
     }
     .open-btn:hover {
       background: #1558b0;
     }
+    .message {
+      font-size: 18px;
+      color: #333;
+    }
   </style>
 </head>
 <body>
-  <!-- User must tap this button -->
-  <a href="https://ankiweb.net" class="open-btn" target="_blank">Open AnkiWeb</a>
+  <div class="message">Tap the button below to open AnkiWeb</div>
+  <a id="open-btn" href="https://ankiweb.net" target="_blank" class="open-btn">Open AnkiWeb</a>
+
+  <script>
+    // Show the button after 2 seconds to avoid iOS auto-redirect
+    document.addEventListener('DOMContentLoaded', () => {
+      setTimeout(() => {
+        document.getElementById('open-btn').style.display = 'inline-block';
+      }, 2000);
+    });
+  </script>
 </body>
 </html>
